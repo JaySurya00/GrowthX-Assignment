@@ -8,14 +8,12 @@ const mongoOptions = {
 
 const connectDB = async () => {
     try {
-
         await mongoose.connect(uri, mongoOptions);
-        console.log('Connected to MongoDB');
+        console.log('Connected to MongoDB database');
         mongoose.connection
-            .on('connected', () => console.log('Connected to MongoDB'))
+            .on('connected', () => console.log('Connected to MongoDB database'))
             .on('error', (err) => console.error('MongoDB connection error:', err))
             .on('disconnected', () => console.log('MongoDB disconnected'));
-
     } catch (error) {
         console.error('Error connecting to MongoDB:', error);
         throw new DatabaseConnectionError('Failed to connect to MongoDB');
